@@ -1,0 +1,52 @@
+spring:
+    jpa:
+        database: postgresql
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                jdbc:
+                    lob:
+                        non_contextual_creation: true
+        show-sql: false
+        
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        password: [TU_PASSWORD]
+        url: jdbc:postgresql://[TU_IP_SERVER_BD]/[TU_BD]
+        username: [TU_USUARIO]
+    
+    mail:
+      default-encoding: UTF-8
+      host: [TU_SERVER_MAIL]
+      username: [TU_MAIL]
+      password: [TU_CLAVE_MAIL]
+      port: [TU_PORT_MAIL]
+      properties:
+         mail:
+            ssl:
+               enable: true
+            smtp:
+               auth: true
+               starttls:
+                  enable: true
+                  required: true
+      protocol: smtp
+      test-connection: false
+    
+    jackson:
+        default-property-inclusion: NON_NULL
+       
+server:
+   port: 8081
+    
+eureka:
+   client:
+      serviceUrl:
+         defaultZone: http://localhost:8761/eureka
+
+#Seguridad
+security: 
+   oauth2:
+      resource:
+         userInfoUri: http://localhost:9999/user
